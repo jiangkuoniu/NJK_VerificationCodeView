@@ -20,15 +20,15 @@ Pod::Spec.new do |spec|
 
 
 
-  spec.source_files     = 'Library/NJK_VerificationCodeViewHeader.h'
+  spec.source_files     = 'Library/*.{h,m}'
 
-  spec.subspec 'CodeView' do |codeview|
-    codeview.source_files = 'Library/CodeView/*.{h,m}'
-  end
+  # spec.subspec 'CodeView' do |codeview|
+  #   codeview.source_files = 'Library/CodeView/*.{h,m}'
+  # end
 
-  spec.subspec 'BoxBackView' do |boxbackview|
-    boxbackview.source_files = 'Library/BoxBackView/*.{h,m}'
-  end
+  # spec.subspec 'BoxBackView' do |boxbackview|
+  #   boxbackview.source_files = 'Library/BoxBackView/*.{h,m}'
+  # end
 
 
 

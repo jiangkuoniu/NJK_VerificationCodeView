@@ -12,9 +12,6 @@
 		7CDEEED4286DB0FA00A243CF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEEED3286DB0FA00A243CF /* ViewController.m */; };
 		7CDEEED9286DB0FF00A243CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CDEEED8286DB0FF00A243CF /* Assets.xcassets */; };
 		7CDEEEDF286DB0FF00A243CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEEEDE286DB0FF00A243CF /* main.m */; };
-		7CDEEEEF286DB30F00A243CF /* NJK_VerificationBoxBackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEEEE8286DB30F00A243CF /* NJK_VerificationBoxBackView.m */; };
-		7CDEEEF0286DB30F00A243CF /* NJK_VerificationCodeViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEEEED286DB30F00A243CF /* NJK_VerificationCodeViewConfig.m */; };
-		7CDEEEF1286DB30F00A243CF /* NJK_VerificationCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEEEEE286DB30F00A243CF /* NJK_VerificationCodeView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,12 +27,12 @@
 		7CDEEEDD286DB0FF00A243CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CDEEEDE286DB0FF00A243CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7CDEEEE6286DB30F00A243CF /* NJK_VerificationCodeViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJK_VerificationCodeViewHeader.h; sourceTree = "<group>"; };
-		7CDEEEE8286DB30F00A243CF /* NJK_VerificationBoxBackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJK_VerificationBoxBackView.m; sourceTree = "<group>"; };
-		7CDEEEE9286DB30F00A243CF /* NJK_VerificationBoxBackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJK_VerificationBoxBackView.h; sourceTree = "<group>"; };
-		7CDEEEEB286DB30F00A243CF /* NJK_VerificationCodeViewConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJK_VerificationCodeViewConfig.h; sourceTree = "<group>"; };
-		7CDEEEEC286DB30F00A243CF /* NJK_VerificationCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJK_VerificationCodeView.h; sourceTree = "<group>"; };
-		7CDEEEED286DB30F00A243CF /* NJK_VerificationCodeViewConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJK_VerificationCodeViewConfig.m; sourceTree = "<group>"; };
-		7CDEEEEE286DB30F00A243CF /* NJK_VerificationCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJK_VerificationCodeView.m; sourceTree = "<group>"; };
+		7CDEEEF2286DB7C000A243CF /* NJK_VerificationCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NJK_VerificationCodeView.h; sourceTree = "<group>"; };
+		7CDEEEF3286DB7C000A243CF /* NJK_VerificationCodeViewConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NJK_VerificationCodeViewConfig.h; sourceTree = "<group>"; };
+		7CDEEEF4286DB7C000A243CF /* NJK_VerificationBoxBackView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NJK_VerificationBoxBackView.m; sourceTree = "<group>"; };
+		7CDEEEF5286DB7C000A243CF /* NJK_VerificationBoxBackView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NJK_VerificationBoxBackView.h; sourceTree = "<group>"; };
+		7CDEEEF6286DB7C000A243CF /* NJK_VerificationCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NJK_VerificationCodeView.m; sourceTree = "<group>"; };
+		7CDEEEF7286DB7C000A243CF /* NJK_VerificationCodeViewConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NJK_VerificationCodeViewConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,30 +92,14 @@
 			isa = PBXGroup;
 			children = (
 				7CDEEEE6286DB30F00A243CF /* NJK_VerificationCodeViewHeader.h */,
-				7CDEEEE7286DB30F00A243CF /* BoxBackView */,
-				7CDEEEEA286DB30F00A243CF /* CodeView */,
+				7CDEEEF5286DB7C000A243CF /* NJK_VerificationBoxBackView.h */,
+				7CDEEEF4286DB7C000A243CF /* NJK_VerificationBoxBackView.m */,
+				7CDEEEF2286DB7C000A243CF /* NJK_VerificationCodeView.h */,
+				7CDEEEF6286DB7C000A243CF /* NJK_VerificationCodeView.m */,
+				7CDEEEF3286DB7C000A243CF /* NJK_VerificationCodeViewConfig.h */,
+				7CDEEEF7286DB7C000A243CF /* NJK_VerificationCodeViewConfig.m */,
 			);
 			path = Library;
-			sourceTree = "<group>";
-		};
-		7CDEEEE7286DB30F00A243CF /* BoxBackView */ = {
-			isa = PBXGroup;
-			children = (
-				7CDEEEE8286DB30F00A243CF /* NJK_VerificationBoxBackView.m */,
-				7CDEEEE9286DB30F00A243CF /* NJK_VerificationBoxBackView.h */,
-			);
-			path = BoxBackView;
-			sourceTree = "<group>";
-		};
-		7CDEEEEA286DB30F00A243CF /* CodeView */ = {
-			isa = PBXGroup;
-			children = (
-				7CDEEEEB286DB30F00A243CF /* NJK_VerificationCodeViewConfig.h */,
-				7CDEEEEC286DB30F00A243CF /* NJK_VerificationCodeView.h */,
-				7CDEEEED286DB30F00A243CF /* NJK_VerificationCodeViewConfig.m */,
-				7CDEEEEE286DB30F00A243CF /* NJK_VerificationCodeView.m */,
-			);
-			path = CodeView;
 			sourceTree = "<group>";
 		};
 		F0FB8076F9AB771DBDEB509A /* Pods */ = {
@@ -224,11 +205,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CDEEEF1286DB30F00A243CF /* NJK_VerificationCodeView.m in Sources */,
 				7CDEEED4286DB0FA00A243CF /* ViewController.m in Sources */,
 				7CDEEECE286DB0FA00A243CF /* AppDelegate.m in Sources */,
-				7CDEEEF0286DB30F00A243CF /* NJK_VerificationCodeViewConfig.m in Sources */,
-				7CDEEEEF286DB30F00A243CF /* NJK_VerificationBoxBackView.m in Sources */,
 				7CDEEEDF286DB0FF00A243CF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
