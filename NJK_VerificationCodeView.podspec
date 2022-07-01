@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
 
   spec.name              = 'NJK_VerificationCodeView'
 
-  spec.version           = '0.0.1'
+  spec.version           = '0.0.2'
 
   spec.summary           = 'A validation box that can be expanded freely'
 
@@ -19,17 +19,18 @@ Pod::Spec.new do |spec|
   spec.source            = {:git => 'https://github.com/jiangkuoniu/NJK_VerificationCodeView.git', :tag => spec.version.to_s }
 
 
+  spec.source_files     = 'Library/*{h,m}'
 
-  spec.source_files     = 'Library/*.{h,m}'
+  # spec.source_files     = 'Library/NJK_VerificationCodeViewHeader.h'
 
   # spec.subspec 'CodeView' do |codeview|
-  #   codeview.source_files = 'Library/CodeView/*.{h,m}'
+  # codeview.source_files = 'Library/CodeView/*.{h,m}'
+  # codeview.dependency   = 'Library/BoxBackView/*'
   # end
 
   # spec.subspec 'BoxBackView' do |boxbackview|
-  #   boxbackview.source_files = 'Library/BoxBackView/*.{h,m}'
+  # boxbackview.source_files = 'Library/BoxBackView/*.{h,m}'
   # end
-
 
 
   spec.requires_arc      = true
