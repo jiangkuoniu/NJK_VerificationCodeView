@@ -18,11 +18,15 @@
         _padding = UIEdgeInsetsMake(0, 0, 0, 0);
         _tintColor = UIColor.blackColor;
         _secureTextEntry = NO;
+        _showDivider = NO;
+        _dividerWidth = _inputBoxWidth;
+        _dividerHeight = 2;
         _font = [UIFont systemFontOfSize:20];
-        _inputType = NJK_ConfigInputType_Number_Alphabet;
+        _inputType = NJKConfigInputType_Number_Alphabet;
         _textColor = UIColor.blackColor;
         _showFlickerAnimation = YES;
         _keyboardType = UIKeyboardTypeNumberPad;
+        _boxLabelString = @"NJK_VerificationBoxBaseLabel";
     }
     return self;
 }

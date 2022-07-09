@@ -12,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NJK_VerificationCodeView : UIView
 @property (nonatomic, copy) void (^finishBlock)(NJK_VerificationCodeView *codeView, NSString *code);
-@property (nonatomic, copy) NSString *boxBackViewName;
 - (instancetype)initWithFrame:(CGRect)frame config:(NJK_VerificationCodeViewConfig *)config;
 @end
 

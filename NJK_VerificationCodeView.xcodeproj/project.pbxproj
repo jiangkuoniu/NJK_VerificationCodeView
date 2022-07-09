@@ -12,6 +12,15 @@
 		7CDEEED4286DB0FA00A243CF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEEED3286DB0FA00A243CF /* ViewController.m */; };
 		7CDEEED9286DB0FF00A243CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CDEEED8286DB0FF00A243CF /* Assets.xcassets */; };
 		7CDEEEDF286DB0FF00A243CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEEEDE286DB0FF00A243CF /* main.m */; };
+		7CDEEF2A287591CE00A243CF /* NJK_VerificationCodeViewHeader.h in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEEEE6286DB30F00A243CF /* NJK_VerificationCodeViewHeader.h */; };
+		7CDEEF2D287591CE00A243CF /* NJK_VerificationCodeView.h in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEEEF2286DB7C000A243CF /* NJK_VerificationCodeView.h */; };
+		7CDEEF2E287591CE00A243CF /* NJK_VerificationCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEEEF6286DB7C000A243CF /* NJK_VerificationCodeView.m */; };
+		7CDEEF2F287591CE00A243CF /* NJK_VerificationCodeViewConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEEEF3286DB7C000A243CF /* NJK_VerificationCodeViewConfig.h */; };
+		7CDEEF30287591CE00A243CF /* NJK_VerificationCodeViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEEEF7286DB7C000A243CF /* NJK_VerificationCodeViewConfig.m */; };
+		7CDEEF362878300300A243CF /* NJK_VerificationBoxBaseLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEEF352878300200A243CF /* NJK_VerificationBoxBaseLabel.m */; };
+		7CDEEF3B2878330800A243CF /* NJK_VerificationBoxBaseLabel.h in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEEF342878300100A243CF /* NJK_VerificationBoxBaseLabel.h */; };
+		7CDEEF3E2878333800A243CF /* NJK_VerificationBoxBorderLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEEF3D2878333800A243CF /* NJK_VerificationBoxBorderLabel.m */; };
+		7CDEEF4128794E9E00A243CF /* NJK_VerificationBoxLineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEEF4028794E9E00A243CF /* NJK_VerificationBoxLineLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,10 +38,14 @@
 		7CDEEEE6286DB30F00A243CF /* NJK_VerificationCodeViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJK_VerificationCodeViewHeader.h; sourceTree = "<group>"; };
 		7CDEEEF2286DB7C000A243CF /* NJK_VerificationCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NJK_VerificationCodeView.h; sourceTree = "<group>"; };
 		7CDEEEF3286DB7C000A243CF /* NJK_VerificationCodeViewConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NJK_VerificationCodeViewConfig.h; sourceTree = "<group>"; };
-		7CDEEEF4286DB7C000A243CF /* NJK_VerificationBoxBackView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NJK_VerificationBoxBackView.m; sourceTree = "<group>"; };
-		7CDEEEF5286DB7C000A243CF /* NJK_VerificationBoxBackView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NJK_VerificationBoxBackView.h; sourceTree = "<group>"; };
 		7CDEEEF6286DB7C000A243CF /* NJK_VerificationCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NJK_VerificationCodeView.m; sourceTree = "<group>"; };
 		7CDEEEF7286DB7C000A243CF /* NJK_VerificationCodeViewConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NJK_VerificationCodeViewConfig.m; sourceTree = "<group>"; };
+		7CDEEF342878300100A243CF /* NJK_VerificationBoxBaseLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NJK_VerificationBoxBaseLabel.h; sourceTree = "<group>"; };
+		7CDEEF352878300200A243CF /* NJK_VerificationBoxBaseLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NJK_VerificationBoxBaseLabel.m; sourceTree = "<group>"; };
+		7CDEEF3C2878333800A243CF /* NJK_VerificationBoxBorderLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NJK_VerificationBoxBorderLabel.h; sourceTree = "<group>"; };
+		7CDEEF3D2878333800A243CF /* NJK_VerificationBoxBorderLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NJK_VerificationBoxBorderLabel.m; sourceTree = "<group>"; };
+		7CDEEF3F28794E9D00A243CF /* NJK_VerificationBoxLineLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NJK_VerificationBoxLineLabel.h; sourceTree = "<group>"; };
+		7CDEEF4028794E9E00A243CF /* NJK_VerificationBoxLineLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NJK_VerificationBoxLineLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,14 +105,26 @@
 			isa = PBXGroup;
 			children = (
 				7CDEEEE6286DB30F00A243CF /* NJK_VerificationCodeViewHeader.h */,
-				7CDEEEF5286DB7C000A243CF /* NJK_VerificationBoxBackView.h */,
-				7CDEEEF4286DB7C000A243CF /* NJK_VerificationBoxBackView.m */,
 				7CDEEEF2286DB7C000A243CF /* NJK_VerificationCodeView.h */,
 				7CDEEEF6286DB7C000A243CF /* NJK_VerificationCodeView.m */,
 				7CDEEEF3286DB7C000A243CF /* NJK_VerificationCodeViewConfig.h */,
 				7CDEEEF7286DB7C000A243CF /* NJK_VerificationCodeViewConfig.m */,
+				7CDEEF372878324700A243CF /* BoxLabel */,
 			);
 			path = Library;
+			sourceTree = "<group>";
+		};
+		7CDEEF372878324700A243CF /* BoxLabel */ = {
+			isa = PBXGroup;
+			children = (
+				7CDEEF342878300100A243CF /* NJK_VerificationBoxBaseLabel.h */,
+				7CDEEF352878300200A243CF /* NJK_VerificationBoxBaseLabel.m */,
+				7CDEEF3C2878333800A243CF /* NJK_VerificationBoxBorderLabel.h */,
+				7CDEEF3D2878333800A243CF /* NJK_VerificationBoxBorderLabel.m */,
+				7CDEEF3F28794E9D00A243CF /* NJK_VerificationBoxLineLabel.h */,
+				7CDEEF4028794E9E00A243CF /* NJK_VerificationBoxLineLabel.m */,
+			);
+			path = BoxLabel;
 			sourceTree = "<group>";
 		};
 		F0FB8076F9AB771DBDEB509A /* Pods */ = {
@@ -205,8 +230,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CDEEF3B2878330800A243CF /* NJK_VerificationBoxBaseLabel.h in Sources */,
+				7CDEEF3E2878333800A243CF /* NJK_VerificationBoxBorderLabel.m in Sources */,
+				7CDEEF2A287591CE00A243CF /* NJK_VerificationCodeViewHeader.h in Sources */,
+				7CDEEF2D287591CE00A243CF /* NJK_VerificationCodeView.h in Sources */,
+				7CDEEF2E287591CE00A243CF /* NJK_VerificationCodeView.m in Sources */,
+				7CDEEF2F287591CE00A243CF /* NJK_VerificationCodeViewConfig.h in Sources */,
+				7CDEEF30287591CE00A243CF /* NJK_VerificationCodeViewConfig.m in Sources */,
+				7CDEEF4128794E9E00A243CF /* NJK_VerificationBoxLineLabel.m in Sources */,
 				7CDEEED4286DB0FA00A243CF /* ViewController.m in Sources */,
 				7CDEEECE286DB0FA00A243CF /* AppDelegate.m in Sources */,
+				7CDEEF362878300300A243CF /* NJK_VerificationBoxBaseLabel.m in Sources */,
 				7CDEEEDF286DB0FF00A243CF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

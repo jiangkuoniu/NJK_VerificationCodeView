@@ -6,17 +6,17 @@
 //
 
 #import "NJK_VerificationCodeView.h"
-#import <Masonry/Masonry.h>
-#import "NJK_VerificationBoxBackView.h"
+#import <Masonry.h>
+#import "NJK_VerificationBoxBaseLabel.h"
 
-#define NJK_VerificationAnimation @"NJK_VerificationAnimation"
+#define NJKVerificationAnimation @"NJKVerificationAnimation"
 
 @interface NJK_VerificationCodeView ()
 @property (nonatomic, strong)NJK_VerificationCodeViewConfig         *config;
 @property (nonatomic, assign)CGFloat                                rootWidth;
 @property (nonatomic, assign)CGFloat                                rootHeight;
 @property (nonatomic, strong)UITextField                            *rootTextField;
-@property (nonatomic, strong)NSMutableArray                         *textFArr;
+@property (nonatomic, strong)NSMutableArray                         *textLabelArr;
 @property (nonatomic, strong)CAShapeLayer                           *flickerLayer;
 @end
 
@@ -36,22 +36,54 @@
 
 - (void)updateConfig{
 #pragma ===================== 这里处理的是空间不够用的情况
-    if ((self.config.padding.left+self.config.padding.right  - self.config.inputCodeNumber*2 + 1)>self.rootWidth) {//左右边距和不能大于父宽度
-        self.config.inputBoxSpacing = 1;
-        self.config.inputBoxWidth = 1;
-        self.config.padding = UIEdgeInsetsMake(self.config.padding.top, (self.rootWidth - self.config.inputCodeNumber*2 + 1)/2, self.config.padding.bottom, (self.rootWidth - self.config.inputCodeNumber*2 + 1)/2);
+    //Box宽度最小的情况
+    //Box宽度最小为10.分割线和空格为5
+    if ((self.config.padding.left+self.config.padding.right
+        +self.config.inputCodeNumber*(10+5)-5//这里Box和空格的宽度
+        +(self.config.showDivider?15:0))//这里是分割线和分割线的空格
+        >self.rootWidth
+        ) {//左右边距和不能大于父宽度
+
+        self.config.inputBoxSpacing = 5;
+        self.config.inputBoxWidth = 10;
+        self.config.dividerWidth = 5;
+
+        CGFloat paddingWidthHeight = (self.rootWidth - self.config.inputCodeNumber*15 + 5 - (self.config.showDivider?15:0))/2;
+        self.config.padding = UIEdgeInsetsMake(self.config.padding.top, paddingWidthHeight, self.config.padding.bottom, paddingWidthHeight);
     }
-    if ((self.config.padding.top+self.config.padding.bottom + 1)>self.rootHeight) {//上下边距和不能大于父高度
-        self.config.inputBoxHeight = 1;
-        self.config.padding = UIEdgeInsetsMake((self.rootHeight-1)/2, self.config.padding.left, (self.rootHeight-1)/2, self.config.padding.right);
+    if ((self.config.padding.top+self.config.padding.bottom + 10)
+        >self.rootHeight) {//上下边距和不能大于父高度
+
+        self.config.inputBoxHeight = 10;
+        self.config.padding = UIEdgeInsetsMake((self.rootHeight-10)/2, self.config.padding.left, (self.rootHeight-10)/2, self.config.padding.right);
     }
 
-    if ((self.config.padding.left+self.config.padding.right+self.config.inputCodeNumber*(self.config.inputBoxWidth+self.config.inputBoxSpacing)-self.config.inputBoxSpacing)>self.rootWidth) {//间距和宽度的设置
-        if ((self.config.padding.left+self.config.padding.right+self.config.inputCodeNumber*(self.config.inputBoxWidth+1) - 1)>self.rootWidth) {//没有间隔时，如果还是大
-            self.config.inputBoxSpacing = 1;
-            self.config.inputBoxWidth = (self.rootWidth - (self.config.padding.left+self.config.padding.right) + 1)/self.config.inputCodeNumber - 1;
+    if ((self.config.padding.left+self.config.padding.right
+         +self.config.inputCodeNumber*(self.config.inputBoxWidth+self.config.inputBoxSpacing)
+         -self.config.inputBoxSpacing
+         +(self.config.showDivider?self.config.dividerWidth+self.config.inputBoxSpacing:0))
+        >self.rootWidth) {//间距和宽度的设置
+
+        if ((self.config.padding.left+self.config.padding.right
+             +self.config.inputCodeNumber*(self.config.inputBoxWidth+5)
+             - 5
+             +(self.config.showDivider?self.config.dividerWidth+5:0))
+            >self.rootWidth) {//间隔设置为5，如果还是大
+
+            self.config.inputBoxSpacing = 5;
+            self.config.inputBoxWidth = (self.rootWidth
+                                         -(self.config.padding.left+self.config.padding.right)
+                                         -self.config.inputCodeNumber*5+5
+                                         -(self.config.showDivider?5:0)
+                                         )/(self.config.inputCodeNumber+(self.config.showDivider?.5:0));
+
+            self.config.dividerWidth = self.config.inputBoxWidth/2;
         }else{
-            self.config.inputBoxSpacing = (self.rootWidth - (self.config.padding.left+self.config.padding.right) - self.config.inputCodeNumber*self.config.inputBoxWidth)/(self.config.inputCodeNumber-1);
+            self.config.inputBoxSpacing = (self.rootWidth
+                                           -(self.config.padding.left+self.config.padding.right)
+                                           -self.config.inputCodeNumber*self.config.inputBoxWidth
+                                           -(self.config.showDivider?self.config.dividerWidth:0)
+                                           )/(self.config.inputCodeNumber+(self.config.showDivider?.5:0));
         }
     }
     if ((self.config.padding.top+self.config.padding.bottom+self.config.inputBoxHeight)>self.rootHeight) {//高度的设置
@@ -59,18 +91,26 @@
     }
 
 #pragma ===================== 这里处理的是空间未使用完整的情况
-    if ((self.config.padding.left+self.config.padding.right+self.config.inputCodeNumber*(self.config.inputBoxWidth+self.config.inputBoxSpacing)-self.config.inputBoxSpacing)<self.rootWidth) {
+    if ((self.config.padding.left+self.config.padding.right
+         +self.config.inputCodeNumber*(self.config.inputBoxWidth+self.config.inputBoxSpacing)-self.config.inputBoxSpacing
+         +(self.config.showDivider?self.config.dividerWidth+self.config.inputBoxSpacing:0))
+        <self.rootWidth) {
+
         CGFloat leftAndRight = (self.rootWidth - (self.config.inputCodeNumber*(self.config.inputBoxWidth+self.config.inputBoxSpacing)-self.config.inputBoxSpacing))/2;
         self.config.padding = UIEdgeInsetsMake(self.config.padding.top, leftAndRight, self.config.padding.bottom, leftAndRight);
     }
-    if ((self.config.padding.top+self.config.padding.bottom+self.config.inputBoxHeight)<self.rootHeight) {//高度的设置
+    if ((self.config.padding.top+self.config.padding.bottom+self.config.inputBoxHeight)
+        <self.rootHeight) {//高度的设置
         self.config.padding = UIEdgeInsetsMake((self.rootHeight-self.config.inputBoxHeight)/2, self.config.padding.left, (self.rootHeight-self.config.inputBoxHeight)/2, self.config.padding.right);
     }
+
+
+
+    
 }
 - (void)creadeUI{
     UIStackView *stackView = [[UIStackView alloc] init];
     stackView.spacing = self.config.inputBoxSpacing;
-    stackView.backgroundColor = UIColor.yellowColor;
     stackView.axis  =  UILayoutConstraintAxisHorizontal;
 
     [self addSubview:stackView];
@@ -83,17 +123,23 @@
 
 
 
-    [self.textFArr removeAllObjects];
+    [self.textLabelArr removeAllObjects];
     for (int i = 0; i<self.config.inputCodeNumber; i++) {
-        UITextField *textF = UITextField.new;
-        textF.textAlignment = NSTextAlignmentCenter;
-        textF.backgroundColor = UIColor.greenColor;
-        textF.userInteractionEnabled = NO;
+        if (i == self.config.inputCodeNumber/2 && self.config.showDivider) {
+            [stackView addArrangedSubview:self.creadeLineView];
+        }
 
-        [stackView addArrangedSubview:textF];
-        [self.textFArr addObject:textF];
+        UILabel *textLabel = [NSClassFromString(self.config.boxLabelString) new];
+        if (![textLabel isKindOfClass:[NJK_VerificationBoxBaseLabel class]]) {
+            textLabel = NJK_VerificationBoxBaseLabel.new;
+        }
 
-        [textF mas_makeConstraints:^(MASConstraintMaker *make) {
+        textLabel.textAlignment = NSTextAlignmentCenter;
+
+        [stackView addArrangedSubview:textLabel];
+        [self.textLabelArr addObject:textLabel];
+
+        [textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.equalTo(@(self.config.inputBoxWidth));
             make.height.equalTo(@(self.config.inputBoxHeight));
        }];
@@ -115,28 +161,26 @@
     })];
 }
 
-- (void)setBoxBackViewName:(NSString *)boxBackViewName{
-    _boxBackViewName = boxBackViewName;
+- (UIView *)creadeLineView{
+    UIView *lineView = UIView.new;
+    [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(self.config.dividerWidth));
+    }];
 
-    for (UITextField *textF in self.textFArr) {
-        UIView *boxBackView = [[NSClassFromString(self.boxBackViewName) alloc] init];
-        [textF insertSubview:boxBackView atIndex:0];
-
-        __weak typeof(boxBackView) weakBoxBackView = boxBackView;
-        [boxBackView mas_makeConstraints:^(MASConstraintMaker *make) {
-            __strong typeof(weakBoxBackView) strongBoxBackView = weakBoxBackView;
-
-            make.edges.equalTo(textF);
-            if ([strongBoxBackView isKindOfClass:[NJK_VerificationBoxBackView class]]) {
-                [(NJK_VerificationBoxBackView *)strongBoxBackView updateUIAfterFrame];
-            }
-        }];
-    }
+    UIView *line = UIView.new;
+    line.backgroundColor = self.config.tintColor;
+    [lineView addSubview:line];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(lineView);
+        make.height.mas_equalTo(@(self.config.dividerHeight));
+        make.centerY.equalTo(lineView);
+    }];
+    return lineView;
 }
 
 - (void)RootTextFTextChangeTap{
     [self.rootTextField becomeFirstResponder];
-    [self updateTextFS];
+    [self updateBoxView];
 }
 - (void)RootTextFTextChange:(NSNotification *)noti{
     if (self.rootTextField != noti.object) {
@@ -144,7 +188,7 @@
     }
 
     [self filterTextCode];
-    [self updateTextFS];
+    [self updateBoxView];
 
     if (self.rootTextField.text.length == self.config.inputCodeNumber) {
         [self TextFSFinish];
@@ -158,17 +202,17 @@
     NSMutableString *mstr = @"".mutableCopy;
     for (int i = 0; i < text.length; ++i) {
         unichar c = [text characterAtIndex:i];
-        if (self.config.inputType == NJK_ConfigInputType_Number_Alphabet) {
+        if (self.config.inputType == NJKConfigInputType_Number_Alphabet) {
             if ((c >= '0' && c <= '9') ||
                 (c >= 'A' && c <= 'Z') ||
                 (c >= 'a' && c <= 'z')) {
                 [mstr appendFormat:@"%c",c];
             }
-        }else if (self.config.inputType == NJK_ConfigInputType_Number) {
+        }else if (self.config.inputType == NJKConfigInputType_Number) {
             if ((c >= '0' && c <= '9')) {
                 [mstr appendFormat:@"%c",c];
             }
-        }else if (self.config.inputType == NJK_ConfigInputType_Alphabet) {
+        }else if (self.config.inputType == NJKConfigInputType_Alphabet) {
             if ((c >= 'A' && c <= 'Z') ||
                 (c >= 'a' && c <= 'z')) {
                 [mstr appendFormat:@"%c",c];
@@ -183,33 +227,35 @@
     }
     self.rootTextField.text = text;
 }
-- (void)updateTextFS{
+- (void)updateBoxView{
+    NJK_VerificationBoxBaseLabel *Responderlabel = self.textLabelArr.firstObject;
+
     NSString *textString = self.rootTextField.text;
-    for (int i = 0; i < self.textFArr.count; ++i) {
-        UITextField *textF = self.textFArr[i];
+    for (int i = 0; i < self.textLabelArr.count; ++i) {
+        UILabel *textLabel = self.textLabelArr[i];
         if (i>=textString.length) {
-            textF.text = @"";
+            textLabel.text = @"";
         }else{
             unichar c = [textString characterAtIndex:i];
-            textF.text = [NSString stringWithFormat:@"%c",c];
+            textLabel.text = [NSString stringWithFormat:@"%c",c];
 
-#pragma ==========> 光标移动
-            [self.flickerLayer removeAnimationForKey:NJK_VerificationAnimation];
-            [self.flickerLayer removeFromSuperlayer];
             if (i<(self.config.inputCodeNumber-1)) {
-                UITextField *nextTextF = self.textFArr[i+1];
-                [self.flickerLayer addAnimation:[self xx_alphaAnimation] forKey:NJK_VerificationAnimation];
-                [nextTextF.layer addSublayer:self.flickerLayer];
+                Responderlabel = self.textLabelArr[i+1];
             }
         }
     }
-    if (!textString.length) {
-        UITextField *textF = self.textFArr.firstObject;
 
-        [self.flickerLayer removeAnimationForKey:NJK_VerificationAnimation];
-        [self.flickerLayer removeFromSuperlayer];
-        [self.flickerLayer addAnimation:[self xx_alphaAnimation] forKey:NJK_VerificationAnimation];
-        [textF.layer addSublayer:self.flickerLayer];
+#pragma ==========> 移除光标
+    [self.flickerLayer removeAnimationForKey:NJKVerificationAnimation];
+    [self.flickerLayer removeFromSuperlayer];
+
+    if (textString.length == self.config.inputCodeNumber){
+        return;
+    }
+    if (Responderlabel) {
+        [self.flickerLayer addAnimation:[self xx_alphaAnimation] forKey:NJKVerificationAnimation];
+        [Responderlabel.layer addSublayer:self.flickerLayer];
+        Responderlabel.text = @" ";
     }
 }
 - (void)TextFSFinish{
@@ -221,11 +267,11 @@
     });
 }
 
-- (NSMutableArray *)textFArr{
-    if (!_textFArr) {
-        _textFArr = NSMutableArray.array;
+- (NSMutableArray *)textLabelArr{
+    if (!_textLabelArr) {
+        _textLabelArr = NSMutableArray.array;
     }
-    return _textFArr;
+    return _textLabelArr;
 }
 - (CAShapeLayer *)flickerLayer{
     if (!_flickerLayer) {
@@ -236,7 +282,7 @@
         _flickerLayer = [CAShapeLayer layer];
         _flickerLayer.path = path.CGPath;
         _flickerLayer.fillColor = self.config.tintColor.CGColor;
-        [_flickerLayer addAnimation:[self xx_alphaAnimation] forKey:NJK_VerificationAnimation];
+        [_flickerLayer addAnimation:[self xx_alphaAnimation] forKey:NJKVerificationAnimation];
     }
     return _flickerLayer;
 }

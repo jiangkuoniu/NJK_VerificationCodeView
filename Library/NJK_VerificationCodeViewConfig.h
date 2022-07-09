@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 
-typedef NS_ENUM(NSUInteger, NJK_ConfigInputType) {
-    NJK_ConfigInputType_Number_Alphabet,
-    NJK_ConfigInputType_Number,
-    NJK_ConfigInputType_Alphabet,
+typedef NS_ENUM(NSUInteger, NJKConfigInputType) {
+    NJKConfigInputType_Number_Alphabet,
+    NJKConfigInputType_Number,
+    NJKConfigInputType_Alphabet,
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -32,16 +32,24 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong,  nonatomic) UIColor          *tintColor;
 ///密文
 @property (assign,  nonatomic) BOOL             secureTextEntry;
-///字体, Default is [UIFont boldSystemFontOfSize:16]
+///是否有分割线Default is
+@property (nonatomic,  assign) BOOL             showDivider;
+///分割线宽度
+@property (nonatomic,  assign) CGFloat          dividerWidth;
+///分割线高度
+@property (nonatomic,  assign) CGFloat          dividerHeight;
+///字体,
 @property (strong,  nonatomic) UIFont           *font;
-///颜色, Default is [UIColor blackColor]
+///颜色
 @property (strong,  nonatomic) UIColor          *textColor;
-///输入类型：数字+字母，数字，字母. Default is 'NJK_ConfigInputType_Number_Alphabet'
-@property (nonatomic,  assign) NJK_ConfigInputType  inputType;
+///输入类型：数字+字母，数字，字母. Default is 'NJKConfigInputType_Number_Alphabet'
+@property (nonatomic,  assign) NJKConfigInputType  inputType;
 ///光标闪烁动画, Default is YES
 @property (nonatomic,  assign) BOOL             showFlickerAnimation;
 ///设置键盘类型
 @property (nonatomic,  assign) UIKeyboardType   keyboardType;
+///设置BoxLabel
+@property (nonatomic,  copy) NSString           *boxLabelString;
 
 @end
 

@@ -10,6 +10,11 @@
 
 #import "NJK_VerificationCodeView.h"
 #import "NJK_VerificationCodeViewConfig.h"
-#import "NJK_VerificationBoxBackView.h"
+#import "NJK_VerificationBoxBaseLabel.h"
+
+
+#import "NJK_VerificationBoxBorderLabel.h"
+#import "NJK_VerificationBoxLineLabel.h"
+
 
 #endif /* NJK_VerificationCodeViewHeader_h */
