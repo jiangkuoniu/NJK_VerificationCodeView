@@ -6,7 +6,7 @@
 //
 
 #import "NJK_VerificationBoxLineLabel.h"
-#import <Masonry.h>
+#import <Masonry/Masonry.h>
 
 @implementation NJK_VerificationBoxLineConfig
 - (instancetype)init{

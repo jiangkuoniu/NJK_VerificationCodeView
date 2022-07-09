@@ -6,7 +6,7 @@
 //
 
 #import "NJK_VerificationCodeView.h"
-#import <Masonry.h>
+#import <Masonry/Masonry.h>
 #import "NJK_VerificationBoxBaseLabel.h"
 
 #define NJKVerificationAnimation @"NJKVerificationAnimation"
