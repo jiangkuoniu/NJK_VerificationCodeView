@@ -1,0 +1,23 @@
+PODS:
+  - Masonry (1.1.0)
+  - NJK_VerificationCodeView (0.0.3):
+    - Masonry
+    - NJK_VerificationCodeView/BoxLabel (= 0.0.3)
+  - NJK_VerificationCodeView/BoxLabel (0.0.3):
+    - Masonry
+
+DEPENDENCIES:
+  - NJK_VerificationCodeView
+
+SPEC REPOS:
+  trunk:
+    - Masonry
+    - NJK_VerificationCodeView
+
+SPEC CHECKSUMS:
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  NJK_VerificationCodeView: b334dd9ed7df54e3b8f23a7cbad7ba0f4b868ef1
+
+PODFILE CHECKSUM: 8b9a2a6978a29a83a4c1025fdcbe17f3875b6f60
+
+COCOAPODS: 1.11.3
